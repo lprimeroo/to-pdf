@@ -1,0 +1,11 @@
+{
+  "name": "topdf",
+  "version": "1.0.0",
+  "description": "converts your code to pdf",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarthak Munshi <sarthakmunshi@gmail.com> (http://sarthakm.me/)",
+  "license": "MIT"
+}
