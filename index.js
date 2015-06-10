@@ -20,7 +20,9 @@ function pdfConverter(){
 		result.toFile("print.pdf",function() {}) ;
 
 		fs.unlink('print.html',function() {
-			fs.unlink('print.js',function() {}) ;
+			fs.unlink('print.js',function() {
+				fs.unlink('main.css',function () {}) ;
+			}) ;
 		}) ;
 	}) ;
 }
@@ -34,6 +36,12 @@ module.exports =  {
 		var dataStream = '' ;
 
 		//fs.createReadStream(fileName).pipe(fs.createWriteStream('print.js')) ;
+		cssContent = "h1, h2, h3 { text-align: center; }" ;
+
+		fs.writeFile('main.css',cssContent, function (err) {
+			if (err)
+        			console.log('ERROR : ' + err );
+		});
 
 		fs.readFileSync(fileName).toString().split('\n').forEach(function (line) { 
     		var newLine = line + '<br />';

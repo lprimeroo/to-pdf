@@ -35,8 +35,8 @@ pd.toPDF('package.json','Printing the JSON','Sarthak Munshi') ;
 
 ## Output
 1)
-![]()
+![](http://i57.tinypic.com/11uiw7n.jpg)
 
 2)
-![]()
+![](http://i62.tinypic.com/28te6ht.jpg)
 
