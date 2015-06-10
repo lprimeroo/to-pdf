@@ -8,6 +8,7 @@ npm install toPDF
 ```
 
 ## Usage
+`toPDF` takes 3 parameters : `filename` , `descriptions` and `author name ` .
 
 Example :
 
