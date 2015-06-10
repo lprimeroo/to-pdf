@@ -11,12 +11,12 @@
   	},
   "repository": {
     "type": "git",
-    "url": "https://github.com/saru95/toPDF"
+    "url": "https://github.com/saru95/topdf"
   },
   "author": "Sarthak Munshi <sarthakmunshi@gmail.com> (http://sarthakm.me/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/saru95/toPDF/issues"
+    "url": "https://github.com/saru95/topdf/issues"
   },
-  "homepage": "https://github.com/saru95/toPDF"
+  "homepage": "https://github.com/saru95/topdf"
 }
