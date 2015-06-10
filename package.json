@@ -1,7 +1,7 @@
 {
-  "name": "topdf",
-  "version": "0.0.1",
-  "description": "converts your code to pdf",
+  "name": "to-pdf",
+  "version": "0.0.2",
+  "description": "convert your code to pdf from within node code .",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,12 +11,12 @@
   	},
   "repository": {
     "type": "git",
-    "url": "https://github.com/saru95/topdf"
+    "url": "https://github.com/saru95/to-pdf"
   },
   "author": "Sarthak Munshi <sarthakmunshi@gmail.com> (http://sarthakm.me/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/saru95/topdf/issues"
+    "url": "https://github.com/saru95/to-pdf/issues"
   },
-  "homepage": "https://github.com/saru95/topdf"
+  "homepage": "https://github.com/saru95/to-pdf"
 }
