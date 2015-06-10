@@ -18,41 +18,43 @@ function pdfConverter(){
 		var stream = result.toStream() ;
 		var tmpPath = result.getTmpPath() ;
 		result.toFile("print.pdf",function() {}) ;
+
 		fs.unlink('print.html',function() {
 			fs.unlink('print.js',function() {}) ;
 		}) ;
 	}) ;
 }
 
-function toPDF(fileName,description,author){
-	
-	var heading = '<h1>' + fileName + '</h1>' + '\n';
-	var subHeading = '<h2>' + description + '</h2>' + '\n' ;
-	var subSubHeading = '<h3>' + author + '</h3>' + '\n' ;
-	var dataStream = '' ;
+module.exports =  {
 
-	//fs.createReadStream(fileName).pipe(fs.createWriteStream('print.js')) ;
+	toPDF: function(fileName,description,author) {
+		var heading = '<h1>' + fileName + '</h1>' + '\n';
+		var subHeading = '<h2>' + description + '</h2>' + '\n' ;
+		var subSubHeading = '<h3>' + author + '</h3>' + '\n' ;
+		var dataStream = '' ;
 
-	fs.readFileSync(fileName).toString().split('\n').forEach(function (line) { 
-    	var newLine = line + '<br />';
-    	fs.appendFileSync("print.js", newLine.toString() + "\n");
-});
+		//fs.createReadStream(fileName).pipe(fs.createWriteStream('print.js')) ;
 
-	fs.readFile('print.js', 'utf8', function (err,data) {
-  		if (err) 
+		fs.readFileSync(fileName).toString().split('\n').forEach(function (line) { 
+    		var newLine = line + '<br />';
+    		fs.appendFileSync("print.js", newLine.toString() + "\n");
+		});
+
+		fs.readFile('print.js', 'utf8', function (err,data) {
+  			if (err) 
   			console.log('ERROR : ' + err );
-  		dataStream = heading + subHeading + subSubHeading +  '<code>' + data + '</code>' ;
-  		fs.writeFile('print2.js', dataStream, function(err) {
-    		if(err)
-        		return console.log(err);
-        	fs.rename('print2.js','print.html',function(err) {
-				if (err)
-					console.log('ERROR : ' + err );
+  			dataStream = heading + subHeading + subSubHeading +  '<code>' + data + '</code>' ;
+  			fs.writeFile('print2.js', dataStream, function(err) {
+    			if (err)
+        			console.log('ERROR : ' + err );
+        		fs.rename('print2.js','print.html',function(err) {
+					if (err)
+						console.log('ERROR : ' + err );
 				pdfConverter();
-			}) ;
-		}); 
-	});
-}
+				}) ;
+			}); 
+		});
+	}
 
+};
 
-toPDF('package.json', 'lolhai', 'sarthak') ;
