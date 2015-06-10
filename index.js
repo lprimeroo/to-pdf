@@ -1,4 +1,3 @@
-var path = require('path') ;
 var fs = require('fs') ;
 var pdf = require('phantomjs-pdf') ;
 
@@ -19,10 +18,13 @@ function pdfConverter(){
 		var stream = result.toStream() ;
 		var tmpPath = result.getTmpPath() ;
 		result.toFile("print.pdf",function() {}) ;
+		fs.unlink('print.html',function() {
+			fs.unlink('print.js',function() {}) ;
+		}) ;
 	}) ;
 }
 
-function topdf(fileName,description,author){
+function toPDF(fileName,description,author){
 	
 	var heading = '<h1>' + fileName + '</h1>' + '\n';
 	var subHeading = '<h2>' + description + '</h2>' + '\n' ;
@@ -31,14 +33,19 @@ function topdf(fileName,description,author){
 
 	//fs.createReadStream(fileName).pipe(fs.createWriteStream('print.js')) ;
 
-	fs.readFile(fileName, 'utf8', function (err,data) {
+	fs.readFileSync(fileName).toString().split('\n').forEach(function (line) { 
+    	var newLine = line + '<br />';
+    	fs.appendFileSync("print.js", newLine.toString() + "\n");
+});
+
+	fs.readFile('print.js', 'utf8', function (err,data) {
   		if (err) 
   			console.log('ERROR : ' + err );
   		dataStream = heading + subHeading + subSubHeading +  '<code>' + data + '</code>' ;
-  		fs.writeFile('print.js', dataStream, function(err) {
+  		fs.writeFile('print2.js', dataStream, function(err) {
     		if(err)
         		return console.log(err);
-        	fs.rename('print.js','print.html',function(err) {
+        	fs.rename('print2.js','print.html',function(err) {
 				if (err)
 					console.log('ERROR : ' + err );
 				pdfConverter();
@@ -48,4 +55,4 @@ function topdf(fileName,description,author){
 }
 
 
-topdf('index.js', 'lolhai', 'sarthak') ;
+toPDF('package.json', 'lolhai', 'sarthak') ;
