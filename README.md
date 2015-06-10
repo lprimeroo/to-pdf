@@ -4,7 +4,7 @@ it with the name `print.pdf` .
 
 ## Install
 ```
-npm install toPDF
+npm install to-pdf
 ```
 
 ## Usage
