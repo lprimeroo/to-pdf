@@ -1,4 +1,7 @@
 # toPDF
+
+[![](https://nodei.co/npm/to-pdf.png?downloads=true)](https://nodei.co/npm/to-pdf/)
+
 Convert your code into PDF from within your node code . PDF gets generated in the same folder as the code calling 
 it with the name `print.pdf` .
 
