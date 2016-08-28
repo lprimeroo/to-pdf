@@ -34,7 +34,7 @@ var pdf = require('toPDF') ;
 
 console.log("Tonight's gonna be a good night") ;
 
-pd.toPDF('package.json','Printing the JSON','Sarthak Munshi') ;
+pdf.toPDF('package.json','Printing the JSON','Sarthak Munshi') ;
 ```
 
 ## Output
